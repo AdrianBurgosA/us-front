@@ -66,7 +66,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-const Template = (props) => {  
+const TemplateAdmin = (props) => {  
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -107,11 +107,6 @@ const Template = (props) => {
                 <img src={`${image}`} width="70" style={{margin: '0 auto'}}/>        
               </Grid>
               <Grid item>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="warning">
-                    <ShoppingCartIcon />
-                  </Badge>
-                </IconButton>
               </Grid>              
             </Grid>
           </Toolbar>
@@ -150,4 +145,4 @@ const Template = (props) => {
   );
 };
 
-export default Template;
+export default TemplateAdmin;
