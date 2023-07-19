@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Template from "./Template";
 import api from "../api/Axios";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import { Button, Card, CardActions, CardContent, Stack, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Chip, Stack, Typography } from "@mui/material";
 import Divider from '@mui/material/Divider';
+import {ShopContext} from '../public/Context'
 
 const PortatilesPage = () => {
   const title = "Portátiles";
   const [products, setProducts] = useState([]);
+  const [selected, setSelected] = useState({})
+  const {productsToShop, setToShop} = useContext(ShopContext)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +25,10 @@ const PortatilesPage = () => {
     };
     fetchData()
   }, []);
+
+  const handleClickAdd = () => {
+    productsToShop.push(selected)
+  }
 
   return (
     <Template title={title}>
@@ -44,9 +51,17 @@ const PortatilesPage = () => {
                 </CardContent>
                 <CardActions>
                   <Stack spacing={2} direction="row">
-                    <Button variant="contained" sx={{backgroundColor: "#47555E", color: "#EEEEEE"}}>Agregar</Button>
+                    <Button variant="contained" sx={{backgroundColor: "#47555E", color: "#EEEEEE"}}
+                      onClick={() => {
+                        setSelected(p)
+                        handleClickAdd()
+                      }}
+                    >Agregar</Button>
                   </Stack>
-                </CardActions>
+                </CardActions><br/>
+                <center>
+                  <Chip label={`Disponibles: (${p.quantity})`}/>
+                </center>
               </Card>
             </Grid>
           ))}
