@@ -13,11 +13,12 @@ const PortatilesPage = () => {
   const [products, setProducts] = useState([]);
   const [selected, setSelected] = useState({})
   const {productsToShop, setToShop} = useContext(ShopContext)
-
+  
   useEffect(() => {
     const fetchData = async () => {
+      var categ = 0
       try {
-        const response = await api.get('/products');
+        const response = await api.get('/getBy',{categ: 0});
         setProducts(response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`);

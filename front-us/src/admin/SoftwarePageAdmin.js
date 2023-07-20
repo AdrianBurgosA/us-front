@@ -15,13 +15,13 @@ import {
 import Divider from "@mui/material/Divider";
 import EditModal from "./utils/EditModal";
 
-const PortatilesPageAdmin = () => {
-  const title = "Portátiles";
+const SoftwarePageAdmin = () => {
+  const title = "Software";
   const [open, setOpen] = useState(false);
   const [prods, setProds] = useState([]);
   const [selected, setSelected] = useState({})
   const [openEdit, setEdit] = useState(false)
-  const categ = 0
+  const categ = 4
 
   useEffect(() => {
     const fetchData = async () => {
@@ -102,4 +102,4 @@ const PortatilesPageAdmin = () => {
   );
 };
 
-export default PortatilesPageAdmin;
+export default SoftwarePageAdmin;

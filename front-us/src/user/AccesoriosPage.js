@@ -8,12 +8,12 @@ import { Button, Card, CardActions, CardContent, Chip, Stack, Typography } from 
 import Divider from '@mui/material/Divider';
 import {ShopContext} from '../public/Context'
 
-const EscritorioPage = () => {
-  const title = "Escritorio";
+const AccesoriosPage = () => {
+  const title = "Accesorios";
   const [products, setProducts] = useState([]);
   const [selected, setSelected] = useState({})
   const {productsToShop, setToShop} = useContext(ShopContext)
-  const categ = 1
+  const categ = 5
 
   useEffect(() => {
     const fetchData = async () => {
@@ -73,4 +73,4 @@ const EscritorioPage = () => {
   );
 };
 
-export default EscritorioPage;
+export default AccesoriosPage;

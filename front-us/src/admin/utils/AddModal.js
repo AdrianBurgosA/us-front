@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import api from '../../api/Axios'
 
 const AddModal = (props) => {
   const [prod, setProd] = useState({
@@ -23,7 +24,13 @@ const AddModal = (props) => {
   };
 
   const handleClick = () => {
-    console.log(prod);
+    api.post('/products',prod)
+    .then(response => {
+      alert("Se agregó con éxito")
+    })
+    .catch(error => {
+      alert("Hubo un error")
+    })
   };
 
   const categorias = [
