@@ -16,6 +16,7 @@ import { ListOptions } from "./ListOptions";
 import image from '../img/logoBanner.png'
 import { Grid } from "@mui/material";
 import Container from '@mui/material/Container';
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -107,11 +108,13 @@ const Template = (props) => {
                 <img src={`${image}`} width="70" style={{margin: '0 auto'}}/>        
               </Grid>
               <Grid item>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="warning">
-                    <ShoppingCartIcon />
-                  </Badge>
-                </IconButton>
+                <Link to="/user/carlist" style={{textDecoration: 'none', color: '#EEEEEE'}}>
+                  <IconButton color="inherit">
+                    <Badge badgeContent={4} color="warning">
+                      <ShoppingCartIcon />
+                    </Badge>
+                  </IconButton>
+                </Link>
               </Grid>              
             </Grid>
           </Toolbar>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Avatar } from '@mui/material';
+import React, {useState} from 'react'
+import { accordionSummaryClasses, Alert, Avatar } from '@mui/material';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,9 +13,28 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import image from '../img/loginside.jpg'
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
     const defaultTheme = createTheme()
+    const [user, setUser] = useState({username: "", password: ""})
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3003/api/login',user)
+        .then(res => {
+            if(res.data.rol == 0){
+                navigate('/admin/portatiles')
+            }else if(res.data.rol == 1){
+                navigate('/user/portatiles')
+            }
+        })
+        .catch(err => {
+            <Alert severity='error'>Credenciales incorrectas!</Alert>
+        })
+    }
 
     return(
         <ThemeProvider theme={defaultTheme}>
@@ -61,6 +80,7 @@ const Login = () => {
                     name="user"
                     autoComplete="user"
                     autoFocus
+                    onChange={(event) => setUser({...user,username: event.target.value})}
                     />
                     <TextField
                     margin="normal"
@@ -71,6 +91,7 @@ const Login = () => {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    onChange={(event) => setUser({...user,password: event.target.value})}
                     />
                     <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
@@ -81,6 +102,7 @@ const Login = () => {
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
+                    onClick={handleSubmit}
                     >
                     Ingresar
                     </Button>

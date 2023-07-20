@@ -8,8 +8,8 @@ import { Button, Card, CardActions, CardContent, Chip, Stack, Typography } from 
 import Divider from '@mui/material/Divider';
 import {ShopContext} from '../public/Context'
 
-const PortatilesPage = () => {
-  const title = "Portátiles";
+const EscritorioPage = () => {
+  const title = "Escritorio";
   const [products, setProducts] = useState([]);
   const [selected, setSelected] = useState({})
   const {productsToShop, setToShop} = useContext(ShopContext)
@@ -72,4 +72,4 @@ const PortatilesPage = () => {
   );
 };
 
-export default PortatilesPage;
+export default EscritorioPage;
