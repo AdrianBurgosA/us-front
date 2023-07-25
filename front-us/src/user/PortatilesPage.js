@@ -16,9 +16,8 @@ const PortatilesPage = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      var categ = 0
       try {
-        const response = await api.get('/getBy',{categ: 0});
+        const response = await api.get('/products');
         setProducts(response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`);

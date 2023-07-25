@@ -18,7 +18,7 @@ const EscritorioPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get('/getBy',categ);
+        const response = await api.get('/products');
         setProducts(response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`);

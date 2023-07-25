@@ -26,7 +26,7 @@ const PortatilesPageAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get('/getBy',categ);
+        const response = await api.get('/products');
         setProds(response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`);
@@ -96,7 +96,7 @@ const PortatilesPageAdmin = () => {
             </Grid>
           ))}
         </Grid>
-        <EditModal selected={selected} open={openEdit} setOpen={setEdit}/>
+        <EditModal selected={selected} open={openEdit} setOpen={setEdit} setSelected={setSelected}/>
       </Box>
     </TemplateAdmin>
   );

@@ -26,7 +26,7 @@ const EscritorioPageAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get('/getBy',categ);
+        const response = await api.get('/products');
         setProds(response.data)
       } catch (err) {
         console.log(`Error: ${err.message}`);

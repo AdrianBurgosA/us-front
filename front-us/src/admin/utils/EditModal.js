@@ -10,11 +10,11 @@ import {
 import React, { useState } from "react";
 
 const EditModal = (props) => {
-  const { selected, open, setOpen } = props;
+  const { selected, open, setOpen, setSelected } = props;
   const handleClose = () => {
     setOpen(false);
   };
-  const [prod, setProd] = useState(selected);
+  
 
   const style = {
     position: "absolute",
@@ -28,7 +28,7 @@ const EditModal = (props) => {
   };
 
   const handleClick = () => {
-    console.log(prod);
+    console.log(selected);
   };
 
   return (
@@ -48,7 +48,7 @@ const EditModal = (props) => {
               required
               value={selected.name}
               onChange={(event) =>
-                setProd({ ...prod, name: event.target.value })
+                setSelected({ ...selected, name: event.target.value })
               }
             />
             <br />
@@ -60,7 +60,7 @@ const EditModal = (props) => {
               required
               value={selected.description}
               onChange={(event) =>
-                setProd({ ...prod, description: event.target.value })
+                setSelected({ ...selected, description: event.target.value })
               }
             />
             <br />
@@ -72,7 +72,7 @@ const EditModal = (props) => {
               required
               value={selected.price}
               onChange={(event) =>
-                setProd({ ...prod, price: event.target.value })
+                setSelected({ ...selected, price: event.target.value })
               }
             />
             <br />
@@ -84,7 +84,7 @@ const EditModal = (props) => {
               required
               value={selected.quantity}
               onChange={(event) =>
-                setProd({ ...prod, quantity: event.target.value })
+                setSelected({ ...selected, quantity: event.target.value })
               }
             />
             <br />
